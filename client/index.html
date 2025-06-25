@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat99 - Random Stranger Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>Chat99</h1>
+            <p>Connect with Random Strangers Worldwide</p>
+        </header>
+
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-card">
+                <h2>Welcome to Chat99</h2>
+                <div class="auth-options">
+                    <button id="guest-chat-btn" class="primary-btn">Chat as Guest</button>
+                    <button id="register-btn" class="secondary-btn">Register</button>
+                    <button id="login-btn" class="secondary-btn">Login</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="guest-setup" class="screen">
+            <div class="setup-card">
+                <h2>Start Chatting</h2>
+                <form id="guest-form">
+                    <input type="text" id="guest-username" placeholder="Enter username (optional)" maxlength="20">
+                    <select id="guest-gender" required>
+                        <option value="">Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="gender-filter">
+                        <option value="any">Chat with Anyone</option>
+                        <option value="male">Males Only</option>
+                        <option value="female">Females Only</option>
+                        <option value="other">Others Only</option>
+                    </select>
+                    <button type="submit" class="primary-btn">Start Chatting</button>
+                </form>
+                <button id="back-to-welcome" class="back-btn">← Back</button>
+            </div>
+        </div>
+
+        <div id="register-screen" class="screen">
+            <div class="auth-card">
+                <h2>Create Account</h2>
+                <form id="register-form">
+                    <input type="text" id="reg-username" placeholder="Username" required maxlength="20">
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                    <input type="password" id="reg-password" placeholder="Password" required minlength="6">
+                    <select id="reg-gender" required>
+                        <option value="">Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <button type="submit" class="primary-btn">Register</button>
+                </form>
+                <button id="back-to-welcome-reg" class="back-btn">← Back</button>
+            </div>
+        </div>
+
+        <div id="waiting-screen" class="screen">
+            <div class="waiting-card">
+                <div class="spinner"></div>
+                <h2>Finding a stranger...</h2>
+                <p>Please wait while we connect you with someone</p>
+                <button id="cancel-search" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+
+        <div id="chat-screen" class="screen">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <span>Connected to Stranger</span>
+                    <div class="chat-controls">
+                        <button id="new-chat-btn" class="control-btn">New Chat</button>
+                        <button id="disconnect-btn" class="control-btn disconnect">Disconnect</button>
+                    </div>
+                </div>
+                
+                <div id="chat-messages" class="messages-container"></div>
+                
+                <div class="chat-input-container">
+                    <div id="message-limit-warning" class="warning hidden">
+                        Wait for stranger's reply before sending more messages
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="message-input" placeholder="Type your message..." maxlength="500">
+                        <input type="file" id="image-input" accept="image/*" hidden>
+                        <button id="image-btn" class="input-btn">📷</button>
+                        <button id="send-btn" class="input-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="disconnected-screen" class="screen">
+            <div class="disconnected-card">
+                <h2>Stranger Disconnected</h2>
+                <p>The conversation has ended</p>
+                <button id="find-new-stranger" class="primary-btn">Find New Stranger</button>
+                <button id="back-to-home" class="secondary-btn">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

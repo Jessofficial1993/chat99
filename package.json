@@ -1,0 +1,20 @@
+{
+  "name": "chat99",
+  "version": "1.0.0",
+  "description": "Chat99 - Random stranger chat platform",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "build": "npm install --prefix client && npm run build --prefix client",
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "postinstall": "npm run install-server && npm run install-client"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": ["chat", "stranger", "random", "dating", "websocket"],
+  "author": "Chat99",
+  "license": "MIT"
+}
