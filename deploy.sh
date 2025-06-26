@@ -1,11 +1,11 @@
 #!/bin/bash
-echo "🚀 Deploying Chat99 to GitHub..."
-echo "Please run this command in your terminal:"
-echo ""
-echo "cd /Users/jesseantony/Documents/learning/upworks/personal_projects/chat99"
-echo "git push -u origin main"
-echo ""
-echo "When prompted for username: Jessofficial1993"
-echo "When prompted for password: use your GitHub password or personal access token"
-echo ""
-echo "After successful push, visit: https://render.com to deploy!"
+
+# Chat99 Deployment Script for Render.com
+echo "🚀 Deploying Chat99..."
+
+# Install server dependencies
+cd server
+npm install
+
+# Start the server
+npm start

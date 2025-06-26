@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: chat99
+    env: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: chat99-db
+          property: connectionString
+      - key: CLIENT_URL
+        value: https://chat99.onrender.com
