@@ -2,10 +2,10 @@
   "name": "chat99-server",
   "version": "1.0.0",
   "description": "Chat99 - Random stranger chat platform server",
-  "main": "server.js",
+  "main": "simple-server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node simple-server.js",
+    "dev": "nodemon simple-server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
