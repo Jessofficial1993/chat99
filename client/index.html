@@ -15,19 +15,19 @@
     <meta property="og:title" content="Chat99 - Free Random Stranger Chat">
     <meta property="og:description" content="Connect with strangers worldwide instantly. Free, safe, anonymous chatting platform with no registration required.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://chat99.com">
-    <meta property="og:image" content="https://chat99.com/og-image.jpg">
+    <meta property="og:url" content="https://chat99-app.onrender.com">
+    <meta property="og:image" content="https://chat99-app.onrender.com/og-image.jpg">
     <meta property="og:site_name" content="Chat99">
     
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Chat99 - Free Random Stranger Chat">
     <meta name="twitter:description" content="Connect with strangers worldwide instantly. Free, safe, anonymous chatting platform.">
-    <meta name="twitter:image" content="https://chat99.com/twitter-image.jpg">
+    <meta name="twitter:image" content="https://chat99-app.onrender.com/twitter-image.jpg">
     
     <!-- Additional SEO -->
     <meta name="theme-color" content="#667eea">
-    <link rel="canonical" href="https://chat99.com">
+    <link rel="canonical" href="https://chat99-app.onrender.com">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -35,7 +35,7 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Chat99",
-        "url": "https://chat99.com",
+        "url": "https://chat99-app.onrender.com",
         "description": "Free random stranger chat platform for connecting with people worldwide",
         "applicationCategory": "SocialNetworkingApplication",
         "operatingSystem": "Web Browser",
@@ -48,7 +48,7 @@
     </script>
     
     <link rel="stylesheet" href="style.css">
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -90,6 +90,33 @@
             </div>
         </div>
 
+
+        <div id="users-list-screen" class="screen">
+            <div class="users-card">
+                <div class="users-header">
+                    <h2>Online Users</h2>
+                    <div class="online-count">
+                        <span id="online-count">0</span> users online
+                    </div>
+                </div>
+                
+                <div class="users-filters">
+                    <select id="users-filter">
+                        <option value="all">All Users</option>
+                        <option value="male">Males</option>
+                        <option value="female">Females</option>
+                        <option value="other">Others</option>
+                    </select>
+                </div>
+                
+                <div id="users-list" class="users-list">
+                    <div class="loading-users">Loading users...</div>
+                </div>
+                
+                <button id="refresh-users" class="secondary-btn">Refresh</button>
+                <button id="back-to-setup" class="secondary-btn">Back</button>
+            </div>
+        </div>
 
         <div id="waiting-screen" class="screen">
             <div class="waiting-card">
@@ -136,6 +163,29 @@
         </div>
     </div>
 
+    <script>
+        // Debug script to check if elements exist
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+            
+            const button = document.getElementById('guest-chat-btn');
+            const welcomeScreen = document.getElementById('welcome-screen');
+            
+            console.log('Button found:', !!button);
+            console.log('Welcome screen found:', !!welcomeScreen);
+            console.log('Welcome screen classes:', welcomeScreen?.className);
+            
+            if (button) {
+                console.log('Button text:', button.textContent);
+                console.log('Button style display:', getComputedStyle(button).display);
+                console.log('Button style visibility:', getComputedStyle(button).visibility);
+            }
+            
+            if (welcomeScreen) {
+                console.log('Welcome screen style display:', getComputedStyle(welcomeScreen).display);
+            }
+        });
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
