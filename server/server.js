@@ -323,6 +323,34 @@ function findMatch(socket) {
 
 const PORT = process.env.PORT || 3001;
 
+// Add keepalive and error handling
 server.listen(PORT, () => {
   console.log(`Chat99 server running on port ${PORT}`);
+});
+
+// Keep server alive on Render free tier
+setInterval(() => {
+  console.log('Server keepalive ping');
+}, 25 * 60 * 1000); // Every 25 minutes
+
+// Handle server errors
+server.on('error', (error) => {
+  console.error('Server error:', error);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  server.close(() => {
+    console.log('Process terminated');
+  });
 });
