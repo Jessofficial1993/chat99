@@ -3,8 +3,8 @@ services:
     name: chat99
     env: node
     plan: free
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
+    buildCommand: npm run postinstall
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
@@ -15,4 +15,16 @@ services:
           name: chat99-db
           property: connectionString
       - key: CLIENT_URL
+        value: https://chat99.onrender.com
+      - key: TRUST_PROXY
+        value: true
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: 100
+      - key: CHAT_RATE_LIMIT_WINDOW_MS
+        value: 60000
+      - key: CHAT_RATE_LIMIT_MAX_MESSAGES
+        value: 30
+      - key: CORS_ORIGINS
         value: https://chat99.onrender.com

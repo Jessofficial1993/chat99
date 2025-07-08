@@ -3,7 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat99 - Random Stranger Chat</title>
+    <title>Chat99 - Free Random Stranger Chat | Connect with People Worldwide</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Chat99 - Free random stranger chat platform. Connect with people worldwide instantly. No registration required. Safe, anonymous chatting with gender filters and image sharing.">
+    <meta name="keywords" content="random chat, stranger chat, anonymous chat, online chat, free chat, meet strangers, chat rooms, video chat alternative, omegle alternative">
+    <meta name="author" content="Chat99">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Chat99 - Free Random Stranger Chat">
+    <meta property="og:description" content="Connect with strangers worldwide instantly. Free, safe, anonymous chatting platform with no registration required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chat99.com">
+    <meta property="og:image" content="https://chat99.com/og-image.jpg">
+    <meta property="og:site_name" content="Chat99">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chat99 - Free Random Stranger Chat">
+    <meta name="twitter:description" content="Connect with strangers worldwide instantly. Free, safe, anonymous chatting platform.">
+    <meta name="twitter:image" content="https://chat99.com/twitter-image.jpg">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#667eea">
+    <link rel="canonical" href="https://chat99.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Chat99",
+        "url": "https://chat99.com",
+        "description": "Free random stranger chat platform for connecting with people worldwide",
+        "applicationCategory": "SocialNetworkingApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
     <link rel="stylesheet" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
@@ -18,9 +61,8 @@
             <div class="welcome-card">
                 <h2>Welcome to Chat99</h2>
                 <div class="auth-options">
-                    <button id="guest-chat-btn" class="primary-btn">Chat as Guest</button>
-                    <button id="register-btn" class="secondary-btn">Register</button>
-                    <button id="login-btn" class="secondary-btn">Login</button>
+                    <button id="guest-chat-btn" class="primary-btn">Start Chatting Now</button>
+                    <p class="guest-info">No registration required • Anonymous • Free</p>
                 </div>
             </div>
         </div>
@@ -48,24 +90,6 @@
             </div>
         </div>
 
-        <div id="register-screen" class="screen">
-            <div class="auth-card">
-                <h2>Create Account</h2>
-                <form id="register-form">
-                    <input type="text" id="reg-username" placeholder="Username" required maxlength="20">
-                    <input type="email" id="reg-email" placeholder="Email" required>
-                    <input type="password" id="reg-password" placeholder="Password" required minlength="6">
-                    <select id="reg-gender" required>
-                        <option value="">Select your gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <button type="submit" class="primary-btn">Register</button>
-                </form>
-                <button id="back-to-welcome-reg" class="back-btn">← Back</button>
-            </div>
-        </div>
 
         <div id="waiting-screen" class="screen">
             <div class="waiting-card">

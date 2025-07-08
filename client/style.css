@@ -65,6 +65,13 @@ body {
     gap: 15px;
 }
 
+.guest-info {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
 .primary-btn, .secondary-btn {
     padding: 15px 25px;
     border: none;

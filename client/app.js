@@ -23,10 +23,7 @@ class Chat99Client {
 
         this.elements = {
             guestChatBtn: document.getElementById('guest-chat-btn'),
-            registerBtn: document.getElementById('register-btn'),
-            loginBtn: document.getElementById('login-btn'),
             guestForm: document.getElementById('guest-form'),
-            registerForm: document.getElementById('register-form'),
             messageInput: document.getElementById('message-input'),
             sendBtn: document.getElementById('send-btn'),
             imageBtn: document.getElementById('image-btn'),
@@ -47,27 +44,17 @@ class Chat99Client {
             this.showScreen('guest-setup');
         });
 
-        this.elements.registerBtn.addEventListener('click', () => {
-            this.showScreen('register-screen');
-        });
 
         this.elements.backToWelcomeBtn.addEventListener('click', () => {
             this.showScreen('welcome-screen');
         });
 
-        document.getElementById('back-to-welcome-reg').addEventListener('click', () => {
-            this.showScreen('welcome-screen');
-        });
 
         this.elements.guestForm.addEventListener('submit', (e) => {
             e.preventDefault();
             this.startGuestChat();
         });
 
-        this.elements.registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.registerUser();
-        });
 
         this.elements.sendBtn.addEventListener('click', () => {
             this.sendMessage();
@@ -194,9 +181,6 @@ class Chat99Client {
         this.genderFilter = genderFilter;
     }
 
-    registerUser() {
-        alert('Registration feature coming soon! Use guest chat for now.');
-    }
 
     findStranger() {
         this.socket.emit('find-stranger', {
