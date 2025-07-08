@@ -26,13 +26,42 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, '../client')));
+
+// Serve static files with proper headers
+app.use(express.static('public', {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    }
+  }
+}));
+
+app.use(express.static(path.join(__dirname, '../client'), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    }
+  }
+}));
+
+// Add logging for all requests
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
 
 // Serve the main app
 app.get('/', (req, res) => {
   console.log('Serving index.html');
-  res.sendFile(path.join(__dirname, '../client/index.html'));
+  const filePath = path.join(__dirname, '../client/index.html');
+  console.log('File path:', filePath);
+  res.sendFile(filePath);
 });
 
 // Add error handling
