@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 
 const corsOrigins = process.env.NODE_ENV === 'production' 
-  ? ["https://chat99.onrender.com"]
+  ? ["https://chat99-app.onrender.com"]
   : ["http://localhost:3000"];
 
 const io = socketIo(server, {
@@ -31,6 +31,19 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 // Serve the main app
 app.get('/', (req, res) => {
+  console.log('Serving index.html');
+  res.sendFile(path.join(__dirname, '../client/index.html'));
+});
+
+// Add error handling
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).send('Something broke!');
+});
+
+// Catch all other routes
+app.get('*', (req, res) => {
+  console.log('Catch-all route for:', req.url);
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
