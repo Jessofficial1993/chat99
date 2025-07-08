@@ -56,6 +56,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// Serve test page
+app.get('/test', (req, res) => {
+  console.log('Serving test-simple.html');
+  const filePath = path.join(__dirname, '../client/test-simple.html');
+  console.log('Test file path:', filePath);
+  res.sendFile(filePath);
+});
+
 // Serve the main app
 app.get('/', (req, res) => {
   console.log('Serving index.html');
